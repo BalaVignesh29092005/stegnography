@@ -1,0 +1,99 @@
+.message-bubble {
+  display: inline-flex;
+  flex-direction: column;
+  padding: 10px 14px;
+  border-radius: 18px;
+  max-width: 60%;
+  word-wrap: break-word;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  background-color: #f1f0f0; /* light gray background */
+  color: #000;
+  position: relative;
+}
+
+.message-bubble.from-me {
+  align-self: flex-end;
+}
+
+.message-bubble.from-them {
+  align-self: flex-start;
+}
+
+.message-text {
+  margin-bottom: 6px;
+}
+
+.message-image {
+  max-width: 200px;
+  border-radius: 12px;
+  margin-top: 6px;
+}
+
+.message-audio {
+  width: 200px;        /* keeps audio player consistent */
+  margin-top: 6px;
+  outline: none;
+}
+
+.message-bubble audio {
+  display: block;      /* ensures audio is on a new line */
+}
+
+/* File bubble */
+.message-file {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #e0e0e0;
+  border-radius: 12px;
+  padding: 6px 10px;
+  margin-top: 6px;
+  width: 100%;           /* full width inside bubble */
+  max-width: 220px;
+  gap: 8px;
+  box-sizing: border-box;
+}
+
+.file-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.file-name {
+  font-size: 0.85rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+}
+
+/* Modern download button */
+.download-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background-color: #d9d9d9; /* neutral gray */
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s, background-color 0.2s;
+  padding: 4px;
+}
+
+.download-btn svg {
+  width: 18px;
+  height: 18px;
+  stroke: #000;  /* black arrow */
+  fill: none;
+  stroke-width: 2;
+}
+
+.download-btn:hover {
+  background-color: #c0c0c0;
+  transform: scale(1.15);
+}

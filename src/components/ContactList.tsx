@@ -1,0 +1,56 @@
+import React, { useState } from "react";
+import "./ContactList.css";
+
+interface Contact {
+  id: string;
+  name: string;
+}
+
+interface ContactListProps {
+  currentUser: Contact;
+  contacts: Contact[];
+  onSelect: (id: string) => void;
+  selectedId: string | null;
+}
+
+function ContactList({ currentUser, contacts, onSelect, selectedId }: ContactListProps) {
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const filteredContacts = contacts.filter((contact) =>
+    contact.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  return (
+    <div className="contact-list">
+      <div className="contact-list-header">
+        <div className="user-avatar">
+          {currentUser.name[0].toUpperCase()}
+        </div>
+        <div className="user-name">{currentUser.name}</div>
+      </div>
+
+      <input
+        type="text"
+        placeholder="Search contacts..."
+        className="contact-search"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+      />
+
+      <ul>
+        {filteredContacts.map((contact) => (
+          <li
+            key={contact.id}
+            className={selectedId === contact.id ? "selected" : ""}
+            onClick={() => onSelect(contact.id)}
+          >
+            {contact.name}
+          </li>
+        ))}
+        {filteredContacts.length === 0 && <li className="no-result">No contacts found</li>}
+      </ul>
+    </div>
+  );
+}
+
+export default ContactList;
