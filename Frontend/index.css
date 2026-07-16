@@ -1,0 +1,159 @@
+/* Reset some default styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Full height layout */
+html, body, #root {
+  height: 100%;
+  background-color: #f5f7fa;
+}
+
+/* Chat app main container */
+div[style*="display: flex; height: 100vh"] {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Contact list styling */
+div[style*="width: 25%"] {
+  background-color: #ffffff;
+  border-right: 1px solid #e0e0e0;
+  display: flex;
+  flex-direction: column;
+}
+
+div[style*="width: 25%"] h2 {
+  font-size: 1.3rem;
+  padding: 16px;
+  color: #333;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+div[style*="width: 25%"] ul {
+  list-style: none;
+  flex: 1;
+  overflow-y: auto;
+}
+
+div[style*="width: 25%"] li {
+  padding: 12px 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+div[style*="width: 25%"] li:hover {
+  background-color: #f0f4f8;
+}
+
+/* Chat window */
+div[style*="flex: 1; overflowY"] {
+  display: flex;
+  flex-direction: column;
+  background-color: #fefefe;
+}
+
+/* Messages area */
+div[style*="flex: 1; overflowY"] {
+  padding: 16px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Message bubbles */
+div[style*="padding: 8px; margin: 8px"] {
+  padding: 12px;
+  border-radius: 12px;
+  max-width: 60%;
+  word-wrap: break-word;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+div[style*="padding: 8px; margin: 8px"][style*="#007bff"] {
+  background-color: #007bff;
+  color: white;
+  align-self: flex-end;
+}
+
+div[style*="padding: 8px; margin: 8px"]:not([style*="#007bff"]) {
+  background-color: #f0f0f0;
+  color: #333;
+  align-self: flex-start;
+}
+
+/* Message images */
+div[style*="padding: 8px; margin: 8px"] img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin-top: 6px;
+}
+
+/* Message audio */
+div[style*="padding: 8px; margin: 8px"] audio {
+  margin-top: 6px;
+  width: 100%;
+}
+
+/* Message input */
+div[style*="borderTop: 1px solid #ccc"] {
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  background-color: #fefefe;
+  border-top: 1px solid #e0e0e0;
+}
+
+div[style*="borderTop: 1px solid #ccc"] input[type="text"] {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-bottom: 8px;
+}
+
+div[style*="borderTop: 1px solid #ccc"] input[type="file"] {
+  border: none;
+}
+
+div[style*="borderTop: 1px solid #ccc"] button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+div[style*="borderTop: 1px solid #ccc"] button:hover {
+  background-color: #0056b3;
+  transform: translateY(-1px);
+}
+
+/* Scrollbar styling */
+div[style*="overflow-y: auto"]::-webkit-scrollbar {
+  width: 8px;
+}
+
+div[style*="overflow-y: auto"]::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 4px;
+}
+
+div[style*="overflow-y: auto"]::-webkit-scrollbar-thumb {
+  background: #c0c0c0;
+  border-radius: 4px;
+}
+
+div[style*="overflow-y: auto"]::-webkit-scrollbar-thumb:hover {
+  background: #999;
+}
