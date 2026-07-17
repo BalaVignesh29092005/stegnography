@@ -16,7 +16,6 @@ router.post("/send", async (req: Request, res: Response) => {
   if (!fromUser || !toUser) return res.status(404).json({ message: "User not found" });
   if (fromUser.id === toUser.id) return res.status(400).json({ message: "Cannot add yourself" });
 
-  // ✅ Check existing requests or friendship
   if (toUser.friendRequests.includes(fromUser._id)) return res.status(400).json({ message: "Request already sent" });
   if (toUser.friends.includes(fromUser._id)) return res.status(400).json({ message: "Already friends" });
 
