@@ -1,0 +1,87 @@
+# About This Project
+
+A full-stack chat application with friend management, direct messaging, and file
+attachments. The project is split into two independent apps: a TypeScript/Express/
+MongoDB backend and a React/Vite/TypeScript frontend.
+
+## File Structure
+
+```
+stegnography/
+├── Backend/
+│   ├── .env                     # Environment variables (Mongo URI, port, session secret)
+│   ├── .gitignore
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── tsconfig.json
+│   ├── Server.ts                # Main server entry point — all active routes live here
+│   ├── Routes/
+│   │   ├── auth.ts              # Signup/login/logout as an Express Router (currently unused)
+│   │   ├── friendRoutes.ts      # Friend request routes as a Router (currently unused)
+│   │   └── messageRoutes.ts     # Messaging + upload routes as a Router (currently unused)
+│   ├── models/
+│   │   ├── User.ts              # User schema: auth fields + friends/requests arrays
+│   │   ├── Message.ts           # Message schema: sender, recipient, text/media URLs
+│   │   └── FriendRequest.ts     # Standalone friend-request schema (currently unused)
+│   └── uploads/                 # Uploaded file storage, served at /uploads
+│
+├── Frontend/
+│   ├── .gitignore
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── index.html               # Vite entry HTML, loads /src/main.tsx
+│   ├── index.css                # Global styles for the chat UI
+│   ├── vite.config.ts
+│   ├── tsconfig.json
+│   ├── tsconfig.app.json
+│   ├── tsconfig.node.json
+│   ├── eslint.config.js
+│   └── src/                     # React application source (components, main.tsx, etc.)
+│
+└── README.md                    # Setup instructions and API reference
+```
+
+## Backend (`Backend/`)
+
+Node.js + Express server written in TypeScript, using MongoDB (via Mongoose) for
+storage and `express-session` (backed by `connect-mongo`) for cookie-based
+authentication — no JWTs are actually issued despite `jsonwebtoken` being listed as
+a dependency.
+
+- **`Server.ts`** — The single file that defines every active route: auth
+  (`/signup`, `/login`, `/logout`, `/me`), friends (`/friends/send`,
+  `/friends/accept`, `/friends/decline`, `/friends`), messaging (`/messages`,
+  `/messages/:contactId`), and file upload (`/upload`, via Multer). Also sets up
+  CORS, the session middleware, and the MongoDB connection.
+- **`Routes/`** — A parallel set of route files (`auth.ts`, `friendRoutes.ts`,
+  `messageRoutes.ts`) written as separate Express Routers, mirroring the same
+  logic as `Server.ts`. These are not imported or mounted anywhere — an
+  in-progress refactor that was never wired in.
+- **`models/`** — Mongoose schemas. `User.ts` handles password hashing
+  automatically via a pre-save hook and tracks friends/incoming/sent requests as
+  arrays of user references. `Message.ts` stores each message with optional
+  text/image/audio/file URLs. `FriendRequest.ts` defines a separate
+  request-tracking collection that isn't currently used anywhere in the app.
+- **`uploads/`** — Where Multer saves uploaded files, named by upload timestamp;
+  served statically at `/uploads/<filename>`.
+
+## Frontend (`Frontend/`)
+
+A Vite + React + TypeScript single-page app. Uses `axios` to call the backend API
+and `@emoji-mart` for an emoji picker in the message composer. No router or
+WebSocket library is included, based on the current dependency list.
+
+- **`index.html`** / **`vite.config.ts`** — Vite's standard entry point and build
+  configuration.
+- **`index.css`** — Global styles, including rules that target the chat layout
+  (contact sidebar, message bubbles, input bar) by matching inline `style`
+  attributes on the React components.
+- **`tsconfig*.json`** / **`eslint.config.js`** — Standard TypeScript project
+  references and ESLint flat config for a Vite React app.
+- **`src/`** — The actual application components and logic.
+
+## Root
+
+- **`README.md`** — Installation steps, environment variable reference, the full
+  API endpoint table, and a "Security Notes" section listing hardening steps
+  before production deployment.
