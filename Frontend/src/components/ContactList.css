@@ -1,0 +1,114 @@
+.contact-list {
+  width: 25%;
+  background-color: #fff;
+  border-right: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  font-family: "Segoe UI", Roboto, sans-serif;
+}
+
+/* Current user header */
+.contact-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 16px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background-color: #3399ff;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 18px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.user-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Sign out button */
+.signout-btn {
+  background: #e74c3c;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  transition: background 0.2s ease;
+}
+
+.signout-btn:hover {
+  background: #c0392b;
+}
+
+/* Search bar */
+.contact-search {
+  padding: 10px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  outline: none;
+  font-size: 14px;
+  margin-bottom: 12px;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact-search:focus {
+  border-color: #3399ff;
+  box-shadow: 0 0 0 3px rgba(51, 153, 255, 0.2);
+}
+
+/* Contact list */
+.contact-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contact-list li {
+  padding: 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+  font-size: 15px;
+  color: #333;
+}
+
+.contact-list li:hover {
+  background-color: #f0f7ff;
+  transform: translateX(2px);
+}
+
+.contact-list li.selected {
+  background-color: #e6f2ff;
+  font-weight: 600;
+  border-left: 4px solid #3399ff;
+}
+
+.no-result {
+  color: #999;
+  text-align: center;
+  padding: 12px;
+  font-style: italic;
+}

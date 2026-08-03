@@ -1,0 +1,273 @@
+/* ============================= */
+/* Message Input Container */
+/* ============================= */
+.message-input-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px;
+  border-top: 1px solid #ddd;
+  background-color: #f9f9f9;
+  position: relative;
+  flex-wrap: wrap;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ============================= */
+/* Buttons Common Style */
+/* ============================= */
+.icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 22px;
+  padding: 6px;
+  border-radius: 50%;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.icon-btn:hover {
+  background-color: #e0e0e0;
+}
+
+/* Send Button */
+.send-btn {
+  font-size: 20px;
+  color: #fff;
+  background-color: #007bff;
+  padding: 6px 12px;
+  border-radius: 20px;
+  transition: background 0.2s ease;
+}
+
+.send-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Audio / Stop / Cancel Buttons */
+.audio-btn, .stop-btn, .cancel-btn {
+  font-size: 20px;
+  padding: 6px 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.stop-btn {
+  color: #f0ad4e;
+}
+
+.stop-btn:hover {
+  color: #ec971f;
+}
+
+.cancel-btn {
+  color: #dc3545;
+}
+
+.cancel-btn:hover {
+  color: #c82333;
+}
+
+/* ============================= */
+/* Text Input */
+/* ============================= */
+.message-input-container input[type="text"] {
+  flex: 1;
+  padding: 10px 14px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  outline: none;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+/* ============================= */
+/* Emoji Picker */
+/* ============================= */
+.emoji-picker {
+  position: absolute;
+  bottom: 60px;
+  right: 10px;
+  z-index: 1000;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  background: #fff;
+}
+
+/* ============================= */
+/* File Menu */
+/* ============================= */
+.file-menu {
+  position: absolute;
+  bottom: 50px;
+  left: 10px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px;
+  z-index: 1001;
+}
+
+.file-menu button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #f0f0f0;
+  transition: background 0.2s ease;
+}
+
+.file-menu button:hover {
+  background-color: #e0e0e0;
+}
+
+/* ============================= */
+/* Recording UI - Horizontal Layout */
+/* ============================= */
+.recording-ui {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 6px 10px;
+  gap: 12px;
+  background: #f0f8ff;
+  border-radius: 12px;
+  border: 1px solid #b0c4de;
+  box-sizing: border-box;
+}
+
+/* Recording Label */
+.recording-label {
+  font-size: 0.95rem;
+  color: #dc3545;
+  min-width: 80px; /* keeps timer visible */
+  text-align: left;
+}
+
+/* Recording Buttons - inline next to label */
+.recording-buttons {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex: 1; /* pushes buttons to use remaining width */
+  justify-content: flex-end; /* buttons to the right */
+}
+
+/* ============================= */
+/* Audio Player Full Width */
+/* ============================= */
+.message-input-container audio {
+  width: 100%;
+  height: 40px;
+  border-radius: 12px;
+  outline: none;
+  background-color: #f0f0f0;
+  padding: 4px 6px;
+  box-sizing: border-box;
+}
+
+/* ============================= */
+/* Audio Preview Container */
+/* ============================= */
+.audio-preview {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 6px 10px;
+  background: #f0f8ff;
+  border-radius: 12px;
+  border: 1px solid #b0c4de;
+  box-sizing: border-box;
+}
+
+/* ============================= */
+/* Secret Dialog */
+.secret-dialog-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.secret-dialog {
+  width: min(480px, 90%);
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 22px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.secret-dialog h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #1f2937;
+}
+
+.secret-dialog label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.95rem;
+  color: #374151;
+}
+
+.secret-dialog textarea,
+.secret-dialog input[type="password"] {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  color: #111827;
+  resize: vertical;
+}
+
+.secret-error {
+  color: #b91c1c;
+  font-size: 0.9rem;
+}
+
+.secret-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.secret-dialog-actions .icon-btn {
+  font-size: 0.95rem;
+  padding: 8px 12px;
+  border-radius: 12px;
+}
+
+.secret-dialog-actions .cancel-btn {
+  color: #374151;
+  background: #f3f4f6;
+}
+
+.secret-dialog-actions .send-btn {
+  color: #ffffff;
+  background: #2563eb;
+}
+
+/* ============================= */
+/* Input Left / Right Icons */
+.input-left-icons, .input-right-icons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
